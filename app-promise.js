@@ -15,6 +15,8 @@ const argv = yargs.options({
 var encodedAddress = encodeURI(argv.address);
 var geocodeUrl = `http://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}`
 
+//axios.get makes the http get request, returns a promise
+//.then function is required when a promise is fulfilled or rejected
 axios.get(geocodeUrl).then((response) => {
     if (response.data.status === 'ZERO_RESULTS') {
         throw new Error('unable to find that address');
